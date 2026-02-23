@@ -1,5 +1,5 @@
-public class Staff {
-
+public class CashierStaff implements IStaff{
+   
     // ====== Fields (Encapsulation) ======
     private String staffId;
     private String fullName;
@@ -9,8 +9,18 @@ public class Staff {
     private String position;  
     private boolean active;
 
+    @Override
+    public boolean can(String action) {
+        if(action.equals(CoffeeShop.CREATE_CUSTOMER) || action.equals(CoffeeShop.CREATE_ORDER) || action.equals(CoffeeShop.VIEW_CUSTOMERS) || action.equals(CoffeeShop.VIEW_ORDERS))
+        {
+            return true;
+        }
+        // TODO Auto-generated method stub
+        return false;
+    }
+
     // ====== Constructor ======
-    public Staff(String staffId, String fullName, String phone,
+    public CashierStaff(String staffId, String fullName, String phone,
                  String username, String password, String position) {
 
         setStaffId(staffId);

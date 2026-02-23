@@ -7,10 +7,10 @@ public class MenuItem {
     private double price;
     private boolean available;
 
-    private Staff createdBy;
+    private IStaff createdBy;
 
     public MenuItem(String itemId, String name, String category, String size,
-                    double price, boolean available, Staff createdBy) {
+                    double price, boolean available, IStaff createdBy) {
 
         setCreatedBy(createdBy);   // ✅ use setter (with validation)
         setItemId(itemId);
@@ -28,14 +28,13 @@ public class MenuItem {
     public String getSize() { return size; }
     public double getPrice() { return price; }
     public boolean isAvailable() { return available; }
-    public Staff getCreatedBy() { return createdBy; }
+    public IStaff getCreatedBy() { return createdBy; }
 
     // ===== Setters =====
-    public void setCreatedBy(Staff createdBy) {
+    public void setCreatedBy(IStaff createdBy) {
         // Enforce: staff must exist
         if (createdBy == null) {
             System.out.println("Cannot create menu item: Staff is required.");
-            this.createdBy = new Staff("UNKNOWN", "UNKNOWN", "00000000", "unknown", "0000", "Staff");
         } else {
             this.createdBy = createdBy;
         }
@@ -84,14 +83,9 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        return "MenuItem{" +
-                "itemId='" + itemId + '\'' +
-                ", name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", size='" + size + '\'' +
-                ", price=" + price +
-                ", available=" + available +
-                ", createdBy='" + createdBy.getStaffId() + " - " + createdBy.getFullName() + '\'' +
-                '}';
+        return "MenuItem [itemId=" + itemId + ", name=" + name + ", category=" + category + ", size=" + size
+                + ", price=" + price + ", available=" + available + ", createdBy=" + createdBy + "]";
     }
+
+    
 }

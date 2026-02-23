@@ -2,6 +2,18 @@ import java.util.ArrayList;
 
 public class CoffeeShop {
 
+    // step 2
+    public static final String CREATE_STAFF = "CREATE_STAFF";
+    public static final String CREATE_CUSTOMER = "CREATE_CUSTOMER";
+    public static final String CREATE_MENU_ITEM = "CREATE_MENU_ITEM";
+    public static final String SET_MENU_ITEM_AVAILABILITY = "SET_MENU_ITEM_AVAILABILITY";
+    public static final String CREATE_ORDER = "CREATE_ORDER";
+    public static final String VIEW_CUSTOMERS = "VIEW_CUSTOMERS";
+    public static final String VIEW_ORDERS = "VIEW_ORDERS";
+    public static final String UPDATE_ORDER_STATUS = "UPDATE_ORDER_STATUS";
+
+
+
     // =========================
     // 1) BASIC INFO
     // =========================
@@ -11,7 +23,8 @@ public class CoffeeShop {
     // =========================
     // 2) "TABLES" (ArrayList)
     // =========================
-    private ArrayList<Staff> staffs;
+    private ArrayList<IStaff> staffs;
+    // ArrayList<Staff> staffs;
     private ArrayList<Customer> customers;
     private ArrayList<MenuItem> menuItems;
     private ArrayList<Order> orders;
@@ -19,7 +32,8 @@ public class CoffeeShop {
     // =========================
     // 3) LOGIN DEPENDENCY
     // =========================
-    private Staff loggedInStaff;   // null = no staff login
+    private IStaff loggedInStaff;   // null = no staff login
+    // private IStaff loggedInStaff;   // null = no staff login
 
     // =========================
     // 4) FEEDBACK MESSAGE
@@ -54,7 +68,7 @@ public class CoffeeShop {
     public String getLastMessage() { return lastMessage; }
 
     public boolean isStaffLoggedIn() { return loggedInStaff != null; }
-    public Staff getLoggedInStaff() { return loggedInStaff; }
+    public IStaff getLoggedInStaff() { return loggedInStaff; }
 
     public void setShopName(String shopName) {
         if (isBlank(shopName)) this.shopName = "CoffeeShop";
@@ -74,7 +88,8 @@ public class CoffeeShop {
     // DEFAULT STAFF (BOOTSTRAP)
     // =========================
     private void seedDefaultAdmin() {
-        Staff admin = new Staff("S001", "Admin", "010000000", "admin", "1234", "Manager");
+       
+        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", "Manager");
         staffs.add(admin);
     }
 
@@ -107,7 +122,7 @@ public class CoffeeShop {
         }
 
         for (int i = 0; i < staffs.size(); i++) {
-            Staff s = staffs.get(i);
+            IStaff s = staffs.get(i);
 
             if (s.getUsername().equalsIgnoreCase(username.trim())) {
 
@@ -141,7 +156,7 @@ public class CoffeeShop {
     public void createStaff(String staffId, String fullName, String phone,
                             String username, String password, String position) {
 
-        if (!requireStaffLogin()) return;
+        if (!requireStaffLogin() || !requirePermission(CREATE_STAFF)) return;
 
         if (isBlank(staffId) || isBlank(username)) {
             setLastMessage("Cannot create staff: staffId/username is empty.");
@@ -156,8 +171,20 @@ public class CoffeeShop {
             }
         }
 
-        staffs.add(new Staff(staffId, fullName, phone, username, password, position));
-        setLastMessage("Staff created successfully.");
+        if(position.equals("Manager"))
+        {
+            staffs.add(new ManagerStaff(staffId, fullName, phone, username, password, position));
+            setLastMessage("Manager created successfully.");
+        }else if(position.equals("Cashier"))
+        {
+            staffs.add(new CashierStaff(staffId, fullName, phone, username, password, position));
+            setLastMessage("Cashier created successfully.");
+        }else if(position.equals("Barista"))
+        {
+            
+            staffs.add(new BaristaStaff(staffId, fullName, phone, username, password, position));
+            setLastMessage("Barista created successfully.");
+        }
     }
 
     // =========================
@@ -328,4 +355,22 @@ public class CoffeeShop {
     private boolean isBlank(String s) {
         return s == null || s.trim().isEmpty();
     }
+    
+    private boolean requirePermission(String action)
+    {
+        if(loggedInStaff == null)
+        {
+            setLastMessage("Please login first");
+            return false;
+        }
+        // if(!loggedInStaff.can(action))
+        // {
+        //     setLastMessage("Permission denied");
+        //     return false;
+        // }
+
+        return true;
+    
+    }
+
 }

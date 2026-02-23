@@ -6,10 +6,10 @@ public class Order {
     private int quantity;
     private double totalPrice;
 
-    private Staff createdBy;     // staff who created the order
+    private IStaff createdBy;     // staff who created the order
     private boolean paid;        // for now: true when order is created (because we deduct balance)
 
-    public Order(String orderId, Customer customer, MenuItem item, int quantity, Staff createdBy) {
+    public Order(String orderId, Customer customer, MenuItem item, int quantity, IStaff createdBy) {
         setOrderId(orderId);
         setCustomer(customer);
         setItem(item);
@@ -26,7 +26,7 @@ public class Order {
     public MenuItem getItem() { return item; }
     public int getQuantity() { return quantity; }
     public double getTotalPrice() { return totalPrice; }
-    public Staff getCreatedBy() { return createdBy; }
+    public IStaff getCreatedBy() { return createdBy; }
     public boolean isPaid() { return paid; }
 
     // ===== Setters =====
@@ -48,7 +48,7 @@ public class Order {
         else this.quantity = quantity;
     }
 
-    public void setCreatedBy(Staff createdBy) {
+    public void setCreatedBy(IStaff createdBy) {
         this.createdBy = createdBy;
     }
 

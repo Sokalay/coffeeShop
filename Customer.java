@@ -8,10 +8,10 @@ public class Customer {
     private boolean active;
 
     // Who created this customer (object reference)
-    private Staff createdBy;
+    private IStaff createdBy;
 
     public Customer(String customerId, String fullName, String phone,
-                    String password, double balance, Staff createdBy) {
+                    String password, double balance, IStaff createdBy) {
 
         setCustomerId(customerId);
         setFullName(fullName);
@@ -29,7 +29,7 @@ public class Customer {
     public String getPhone() { return phone; }
     public double getBalance() { return balance; }
     public boolean isActive() { return active; }
-    public Staff getCreatedBy() { return createdBy; }
+    public IStaff getCreatedBy() { return createdBy; }
 
     public boolean checkPassword(String input) {
         return password != null && password.equals(input);

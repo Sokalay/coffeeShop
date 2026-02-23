@@ -1,5 +1,5 @@
-public class Staff {
-
+public class ManagerStaff implements IStaff{
+    
     // ====== Fields (Encapsulation) ======
     private String staffId;
     private String fullName;
@@ -9,8 +9,14 @@ public class Staff {
     private String position;  
     private boolean active;
 
+    @Override
+    public boolean can(String action) {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
     // ====== Constructor ======
-    public Staff(String staffId, String fullName, String phone,
+    public ManagerStaff(String staffId, String fullName, String phone,
                  String username, String password, String position) {
 
         setStaffId(staffId);
