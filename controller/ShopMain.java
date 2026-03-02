@@ -1,17 +1,27 @@
 package controller;
 import java.util.Scanner;
 
+import user.CashierStaff;
+import user.Staff;
+
 public class ShopMain {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        CoffeeShop shop = new CoffeeShop("CADT Cafe", "Phnom Penh");
+
+         CoffeeShop shop = new CoffeeShop("CADT Cafe", "Phnom Penh");
 
         shop.createStaff("S001", "Admin", "010000000", "admin", "1234","Manager");
-        shop.createStaff("S002", "Barista", "010000000", "barista", "1234", "Baristar");
+        shop.createStaff("S002", "Cashier", "010000000", "Cashier", "1234", "Cashier");
+
 
         System.out.println(shop);
+
+        // Object o1 = new Object();
+        // Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
+        
+        // s1.equals(o1);
 
         //create staff
         // Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");

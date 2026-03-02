@@ -196,7 +196,7 @@ public class CoffeeShop {
             setLastMessage("Manager created successfully.");
         }else if(position.equals("Cashier"))
         {
-            staffs.add(new CashierStaff(staffId, fullName, phone, username, password, position));
+            staffs.add(new CashierStaff(new Staff(staffId, fullName, phone, username, password),1000));
             setLastMessage("Cashier created successfully.");
         }else if(position.equals("Barista"))
         {
@@ -241,7 +241,7 @@ public class CoffeeShop {
     public void createMenuItem(String itemId, String name, String category, String size,
                                double price, boolean available) {
 
-        if (!requireStaffLogin()) return;
+        if (!requireStaffLogin() || !requirePermission(CREATE_MENU_ITEM) )return;
 
         if (isBlank(itemId)) {
             setLastMessage("Cannot create menu item: itemId is empty.");

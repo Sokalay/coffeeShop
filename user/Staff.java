@@ -97,8 +97,7 @@ public class Staff implements IStaff{
     // ====== toString ======
     @Override
     public String toString() {
-        return "Staff{" +
-                "staffId='" + staffId + '\'' +
+        return "S{" +
                 ", fullName='" + fullName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", username='" + username + '\'' +
@@ -109,7 +108,7 @@ public class Staff implements IStaff{
     @Override
     public boolean equals(Object obj) {
         Staff s1 = (Staff) obj;
-        if(s1.staffId.equals(staffId))
+        if(s1.phone.equals(phone))
         {
             return true;
         }

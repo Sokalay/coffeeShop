@@ -16,7 +16,7 @@ public class Customer{
 
     public Customer(String customerId, String fullName, String phone,
                     String password, double balance, IStaff createdBy) {
-
+        
         setCustomerId(customerId);
         setFullName(fullName);
         setPhone(phone);
