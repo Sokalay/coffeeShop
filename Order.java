@@ -1,3 +1,5 @@
+import user.IStaff;
+
 public class Order {
 
     private String orderId;

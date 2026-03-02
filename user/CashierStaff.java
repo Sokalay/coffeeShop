@@ -1,3 +1,7 @@
+package user;
+
+import controller.CoffeeShop;
+
 public class CashierStaff implements IStaff{
    
     // ====== Fields (Encapsulation) ======

@@ -1,3 +1,5 @@
+import user.IStaff;
+
 public class MenuItem {
 
     private String itemId;

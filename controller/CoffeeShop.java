@@ -1,4 +1,13 @@
+package controller;
 import java.util.ArrayList;
+
+import Customer;
+import MenuItem;
+import Order;
+import user.BaristaStaff;
+import user.CashierStaff;
+import user.IStaff;
+import user.ManagerStaff;
 
 public class CoffeeShop {
 
@@ -89,7 +98,7 @@ public class CoffeeShop {
     // =========================
     private void seedDefaultAdmin() {
        
-        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", "Manager");
+        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", 2000);
         staffs.add(admin);
     }
 
@@ -173,7 +182,7 @@ public class CoffeeShop {
 
         if(position.equals("Manager"))
         {
-            staffs.add(new ManagerStaff(staffId, fullName, phone, username, password, position));
+            staffs.add(new ManagerStaff(staffId, fullName, phone, username, password,2000));
             setLastMessage("Manager created successfully.");
         }else if(position.equals("Cashier"))
         {

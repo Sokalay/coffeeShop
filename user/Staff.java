@@ -1,26 +1,37 @@
-public class Staff {
+package user;
+public class Staff implements IStaff{
 
     // ====== Fields (Encapsulation) ======
     private String staffId;
     private String fullName;
     private String phone;
     private String username;
-    private String password;   
-    private String position;  
+    private String password;    
     private boolean active;
+
+    
+
+    @Override
+    public boolean can(String action) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
     // ====== Constructor ======
     public Staff(String staffId, String fullName, String phone,
-                 String username, String password, String position) {
+                 String username, String password) {
 
         setStaffId(staffId);
         setFullName(fullName);
         setPhone(phone);
         setUsername(username);
         setPassword(password);
-        setPosition(position);
 
         this.active = true;
+    }
+
+    protected String getPassword() {
+        return password;
     }
 
     // ====== Getters ======
@@ -28,7 +39,6 @@ public class Staff {
     public String getFullName() { return fullName; }
     public String getPhone() { return phone; }
     public String getUsername() { return username; }
-    public String getPosition() { return position; }
     public boolean isActive() { return active; }
 
     // For login check (simple for lesson)
@@ -66,11 +76,6 @@ public class Staff {
         else this.password = pw;
     }
 
-    public void setPosition(String position) {
-        if (isBlank(position)) this.position = "Staff";
-        else this.position = position.trim();
-    }
-
     public void setActive(boolean active) {
         this.active = active;
     }
@@ -97,8 +102,19 @@ public class Staff {
                 ", fullName='" + fullName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", username='" + username + '\'' +
-                ", position='" + position + '\'' +
                 ", active=" + active +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Staff s1 = (Staff) obj;
+        if(s1.staffId.equals(staffId))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    
 }

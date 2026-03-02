@@ -1,4 +1,8 @@
-public class ManagerStaff implements IStaff{
+package user;
+
+import controller.CoffeeShop;
+
+public class BaristaStaff extends Staff{
     
     // ====== Fields (Encapsulation) ======
     private String staffId;
@@ -11,12 +15,16 @@ public class ManagerStaff implements IStaff{
 
     @Override
     public boolean can(String action) {
+       if(action.equals(CoffeeShop.CREATE_MENU_ITEM) || action.equals(CoffeeShop.VIEW_ORDERS) || action.equals(CoffeeShop.UPDATE_ORDER_STATUS))
+        {
+            return true;
+        }
         // TODO Auto-generated method stub
-        return true;
+        return false;
     }
 
     // ====== Constructor ======
-    public ManagerStaff(String staffId, String fullName, String phone,
+    public BaristaStaff(String staffId, String fullName, String phone,
                  String username, String password, String position) {
 
         setStaffId(staffId);

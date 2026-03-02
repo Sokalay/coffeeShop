@@ -1,4 +1,7 @@
-public class Customer {
+import user.IStaff;
+import user.Staff;
+
+public class Customer{
 
     private String customerId;
     private String fullName;
