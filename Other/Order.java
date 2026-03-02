@@ -1,3 +1,4 @@
+package Other;
 import user.IStaff;
 
 public class Order {

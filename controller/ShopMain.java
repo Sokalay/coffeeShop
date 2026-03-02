@@ -1,25 +1,29 @@
 package controller;
 import java.util.Scanner;
 
-import user.ManagerStaff;
-import user.Staff;
 public class ShopMain {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        // CoffeeShop shop = new CoffeeShop("CADT Cafe", "Phnom Penh");
-        //create staff
-        Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
-        Staff s2 = new Staff("S002", "Barista", "010000000", "barista", "1234");
-        // System.out.println(s1);
-        // System.out.println(s2);
+        CoffeeShop shop = new CoffeeShop("CADT Cafe", "Phnom Penh");
 
-        ManagerStaff m1 = new ManagerStaff(s1, 2000);
+        shop.createStaff("S001", "Admin", "010000000", "admin", "1234","Manager");
+        shop.createStaff("S002", "Barista", "010000000", "barista", "1234", "Baristar");
+
+        System.out.println(shop);
+
+        //create staff
+        // Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
+        // Staff s2 = new Staff("S002", "Barista", "010000000", "barista", "1234");
+        // // System.out.println(s1);
+        // // System.out.println(s2);
+
+        // ManagerStaff m1 = new ManagerStaff(s1, 2000);
         
-        // m1.can("CREATE_CUSTOMER");
-        System.out.println(m1.can("CREATE_CUSTOMER"));
-        System.out.println(s1.can("CREATE_CUSTOMER"));
+        // // m1.can("CREATE_CUSTOMER");
+        // System.out.println(m1.can("CREATE_CUSTOMER"));
+        // System.out.println(s1.can("CREATE_CUSTOMER"));
         
         // int choice;
 

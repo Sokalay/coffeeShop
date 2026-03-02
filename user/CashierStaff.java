@@ -2,7 +2,7 @@ package user;
 
 import controller.CoffeeShop;
 
-public class CashierStaff implements IStaff{
+public class CashierStaff extends Staff implements IStaff{
    
     // ====== Fields (Encapsulation) ======
     private String staffId;
@@ -26,7 +26,7 @@ public class CashierStaff implements IStaff{
     // ====== Constructor ======
     public CashierStaff(String staffId, String fullName, String phone,
                  String username, String password, String position) {
-
+        super(staffId, fullName, phone, username, password);
         setStaffId(staffId);
         setFullName(fullName);
         setPhone(phone);

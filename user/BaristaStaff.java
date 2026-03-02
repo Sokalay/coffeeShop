@@ -26,7 +26,7 @@ public class BaristaStaff extends Staff{
     // ====== Constructor ======
     public BaristaStaff(String staffId, String fullName, String phone,
                  String username, String password, String position) {
-
+        super(staffId, fullName, phone, username, password);
         setStaffId(staffId);
         setFullName(fullName);
         setPhone(phone);

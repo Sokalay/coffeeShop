@@ -1,13 +1,14 @@
 package controller;
 import java.util.ArrayList;
 
-import Customer;
-import MenuItem;
-import Order;
+import Other.Customer;
+import Other.MenuItem;
+import Other.Order;
 import user.BaristaStaff;
 import user.CashierStaff;
 import user.IStaff;
 import user.ManagerStaff;
+import user.Staff;
 
 public class CoffeeShop {
 
@@ -32,7 +33,7 @@ public class CoffeeShop {
     // =========================
     // 2) "TABLES" (ArrayList)
     // =========================
-    private ArrayList<IStaff> staffs;
+    private ArrayList<Staff> staffs;
     // ArrayList<Staff> staffs;
     private ArrayList<Customer> customers;
     private ArrayList<MenuItem> menuItems;
@@ -41,7 +42,7 @@ public class CoffeeShop {
     // =========================
     // 3) LOGIN DEPENDENCY
     // =========================
-    private IStaff loggedInStaff;   // null = no staff login
+    private Staff loggedInStaff;   // null = no staff login
     // private IStaff loggedInStaff;   // null = no staff login
 
     // =========================
@@ -67,6 +68,13 @@ public class CoffeeShop {
         seedDefaultAdmin();
 
         lastMessage = "CoffeeShop created. Default staff: admin / 1234";
+    }
+
+    @Override
+    public String toString() {
+        return "CoffeeShop [shopName=" + shopName + ", address=" + address + ", staffs=" + staffs + ", customers="
+                + customers + ", menuItems=" + menuItems + ", orders=" + orders + ", loggedInStaff=" + loggedInStaff
+                + ", lastMessage=" + lastMessage + "]";
     }
 
     // =========================
@@ -98,7 +106,8 @@ public class CoffeeShop {
     // =========================
     private void seedDefaultAdmin() {
        
-        ManagerStaff admin = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234", 2000);
+        Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
+        ManagerStaff admin = new ManagerStaff(s1, 2000);
         staffs.add(admin);
     }
 
@@ -131,7 +140,7 @@ public class CoffeeShop {
         }
 
         for (int i = 0; i < staffs.size(); i++) {
-            IStaff s = staffs.get(i);
+            Staff s = staffs.get(i);
 
             if (s.getUsername().equalsIgnoreCase(username.trim())) {
 
@@ -182,7 +191,8 @@ public class CoffeeShop {
 
         if(position.equals("Manager"))
         {
-            staffs.add(new ManagerStaff(staffId, fullName, phone, username, password,2000));
+            Staff s = new Staff(staffId, fullName, phone, username, password);
+            staffs.add(new ManagerStaff(s,2000));
             setLastMessage("Manager created successfully.");
         }else if(position.equals("Cashier"))
         {
