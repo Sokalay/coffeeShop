@@ -1,5 +1,5 @@
 package user;
-public class Staff implements IStaff{
+public abstract class Staff implements IStaff{
 
     // ====== Fields (Encapsulation) ======
     private String staffId;
@@ -12,10 +12,7 @@ public class Staff implements IStaff{
     
 
     @Override
-    public boolean can(String action) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+    public abstract boolean can(String action);
 
     // ====== Constructor ======
     public Staff(String staffId, String fullName, String phone,

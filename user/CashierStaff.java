@@ -6,9 +6,9 @@ public class CashierStaff extends Staff{
 
     private float salary;
 
-    public CashierStaff(Staff s1, float salary)
+    public CashierStaff(String staffID, String fullName, String phone, String username, String password,float salary)
     {
-        super(s1.getStaffId(), s1.getFullName(), s1.getPhone(), s1.getUsername(), s1.getPassword());
+        super(staffID, fullName, phone, username, password);
         this.setSalary(salary);
     }
 

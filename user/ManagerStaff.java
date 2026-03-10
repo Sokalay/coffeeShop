@@ -1,6 +1,6 @@
 package user;
 
-public class ManagerStaff extends Staff implements IStaff{
+public class ManagerStaff extends Staff{
 
     private float salary;
 
@@ -11,9 +11,9 @@ public class ManagerStaff extends Staff implements IStaff{
         return true;
     }
     // ====== Constructor ======
-    public ManagerStaff(Staff s, float salary) {
+    public ManagerStaff(String staffID, String fullName, String phone, String username, String password, float salary) {
         
-        super(s.getStaffId(), s.getFullName(), s.getPhone(), s.getUsername(), s.getPassword());
+        super(staffID, fullName, phone, username, password);
         this.setSalary(salary);
     }
     public float getSalary() {

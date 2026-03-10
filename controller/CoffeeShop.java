@@ -106,9 +106,8 @@ public class CoffeeShop {
     // =========================
     private void seedDefaultAdmin() {
        
-        Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
-        ManagerStaff admin = new ManagerStaff(s1, 2000);
-        staffs.add(admin);
+        Staff s1 = new ManagerStaff("S001", "Admin", "010000000", "admin", "1234",100000000);
+        staffs.add(s1);
     }
 
     // =========================
@@ -191,17 +190,20 @@ public class CoffeeShop {
 
         if(position.equals("Manager"))
         {
-            Staff s = new Staff(staffId, fullName, phone, username, password);
-            staffs.add(new ManagerStaff(s,2000));
+            // Staff s = new Staff(staffId, fullName, phone, username, password);
+            Staff s = new ManagerStaff(staffId, fullName, phone, username, password, 1000);
+            staffs.add(s);
             setLastMessage("Manager created successfully.");
         }else if(position.equals("Cashier"))
         {
-            staffs.add(new CashierStaff(new Staff(staffId, fullName, phone, username, password),1000));
+             Staff s = new CashierStaff(staffId, fullName, phone, username, password, 1000);
+            staffs.add(s);
             setLastMessage("Cashier created successfully.");
         }else if(position.equals("Barista"))
         {
             
-            staffs.add(new BaristaStaff(staffId, fullName, phone, username, password, position));
+             Staff s = new BaristaStaff(staffId, fullName, phone, username, password, position);
+            staffs.add(s);
             setLastMessage("Barista created successfully.");
         }
     }

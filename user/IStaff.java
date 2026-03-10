@@ -7,5 +7,5 @@ public interface IStaff {
     boolean checkPassword(String input);
     String getFullName();
 
-    boolean can(String action);
+    public abstract boolean can(String action);
 }

@@ -12,11 +12,9 @@ public class ShopMain {
 
          CoffeeShop shop = new CoffeeShop("CADT Cafe", "Phnom Penh");
 
-        shop.createStaff("S001", "Admin", "010000000", "admin", "1234","Manager");
-        shop.createStaff("S002", "Cashier", "010000000", "Cashier", "1234", "Cashier");
+        // shop.createStaff(null, null, null, null, null, null);
 
-
-        System.out.println(shop);
+        // System.out.println(shop);
 
         // Object o1 = new Object();
         // Staff s1 = new Staff("S001", "Admin", "010000000", "admin", "1234");
